@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>导出</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 24px;
+    }
+  </style>
+  <script src="../utils/jquery.min.js"></script>
+  <script src="../utils/html2canvas.js"></script>
+  <script src="../utils/jspdf.debug.js"></script>
+  <script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+          ignoreClass:"comment-content" //避开含该Class的标签
+      },
+      "HTML-CSS": {
+          availableFonts: ["STIX","TeX"], //可选字体
+          showMathMenu: false, //关闭右击菜单显示
+          // linebreaks: {automatic: true}
+      },
+      SVG:{
+        // linebreaks: {automatic: true}
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="error-book"></div>
+</body>
+<script>
+    // onload
+    window.onload = function () {
+      get()
+    }
+  
+    var data = {}
+    var isExport = true // 是否连续导出
+    var is = false;
+    var examId = '296094' // 考试id
+    var subjectName = '英语' // 科目名称
+    let pageIndex = sessionStorage.getItem('pageIndex')
+    if(!pageIndex){
+        sessionStorage.setItem("pageIndex",1)
+        pageIndex = sessionStorage.getItem('pageIndex')
+    }
+  
+    // 题目
+    function tNumber(tNumber) {
+      let html = `<div>【题${tNumber}】</div>`
+      return html
+    }
+
+    // 题干
+    function getMain(item) {
+      let html = `<div>${item}</div>`
+      return html
+    }
+
+    // getData
+    function get () {
+      $.ajax({
+        url: `http://47.107.116.88:8023/dckj-ec-exam/web/ErrorExport/ExportPdf?examId=${examId}&subjectName=${subjectName}&pageIndex=${pageIndex}`,
+        success: (res) => {
+          console.log(res)
+          // 处理数据
+          data = res.data[0]
+          // 考试名称, 学生名称, 班级名称, dom数组
+          var examName = data.examName
+          var studentName =  data.studentName
+          var className = data.className
+          var mainArray = []
+          // for 
+          for( let i = 0; i < data.dcWrongbookExports.length; i++) {
+            // 题目
+            $('#error-book').append(tNumber(data.dcWrongbookExports[i].tNumber))
+            // 题干
+            mainArray = data.dcWrongbookExports[i].subject1.split('<br>')
+            console.log(mainArray)
+            for(let j = 0; j < mainArray.length; j++) {
+              $('#error-book').append(getMain(mainArray[j]))
+            }
+            // $('')          
+          }
+        }
+      })
+    }
+  </script>
+</html>

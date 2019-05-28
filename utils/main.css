@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+}
+.btn-box {
+  position: fixed;
+  z-index: 10000;
+}
+img {
+  max-width: 330mm;
+}
+
+body {
+  background-color: #cccccc;
+}
+
+#error-book {
+  position: relative;
+  width: 420mm;
+  min-height: 594mm;
+  padding: 0 3mm 0 7mm;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+#error-book1 {
+  position: relative;
+  width: 420mm;
+  min-height: 594mm;
+  padding: 0 3mm 0 7mm;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+#error-book0 {
+  position: relative;
+  width: 420mm;
+  min-height: 594mm;
+  padding: 0 3mm 0 7mm;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+.student-info {
+  position: absolute;
+  background-color: #ffffff;
+  border-bottom: 1mm solid #cccccc;
+  top: 0;
+  left: 7mm;
+  z-index: 100;
+  width: 410mm;
+  height: 40mm;
+  line-height: 40mm;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-info-temp {
+  position: relative;
+  width: 410mm;
+  height: 40mm;
+}
+
+.exam-name {
+  margin-right: 15mm;
+}
+
+.student {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.page-index {
+  width: 30mm;
+  display: flex;
+  height: 20mm;
+  float: right;
+  margin-right: 5mm;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.logo {
+  width: 60mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  height: 50mm;
+}
+
+.question {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  width: 410mm;
+  height: 0.5mm;
+  background-color: #cccccc;
+}
+
+.timu-box {
+  width: 350mm;
+  height: auto;
+  border-right: 0.5mm solid #cccccc;
+  padding: 0 10mm 0 5mm;
+}
+
+.zsd {
+  width: 60mm;
+  padding: 3mm 3mm 0 3mm;
+}
+
+.zsd-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.yuanti {
+  /*padding-bottom: 10mm;*/
+  line-height: 1.8;
+  border-bottom: 0.5mm dashed #cccccc;
+}
+
+.tuozhanti {
+  /*padding-bottom: 10mm;*/
+  line-height: 1.8;
+}
+
+.yuanti-title {
+  width: 330mm;
+  min-height: 15mm;
+  line-height: 15mm;
+  font-size: 28px;
+  font-weight: bold;
+  /* display: flex; */
+  justify-content: space-between;
+}
+
+.tihao {
+  float: left;
+}
+
+.score-info {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+
+.score-info div {
+  margin-left: 5mm;
+}
+
+.yt-content {
+  word-break: break-all;
+  line-height: 1.8;
+  font-size: 24px;
+}
+
+.yt-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.option-item {
+  width: auto;
+  margin-right: 10mm;
+}
+
+.answer-area-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.answer-area {
+  height: 70mm;
+}
+.errorTitle {
+  font-size: 24px;
+  line-height: 30mm;
+  height: 30mm;
+  font-weight: 700;
+  text-align: center;
+}
+.answer-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+}
+.answer-content {
+  display: block;
+  font-size: 24px;
+}
+.yt-content img {
+  min-width: 300px;
+}
+img {
+  max-height: 1000mm;
+}
